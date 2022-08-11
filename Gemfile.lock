@@ -5,6 +5,7 @@ GEM
 
 PLATFORMS
   universal-darwin-21
+  x64-mingw-ucrt
 
 DEPENDENCIES
   ruby2d (~> 0.11.1)
