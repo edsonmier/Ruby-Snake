@@ -22,7 +22,7 @@ module Model
         
     end
 
-    class State < Struct.new(:snake, :food, :grid, :next_direction)
+    class State < Struct.new(:snake, :food, :grid, :next_direction :game_finished)
         
     end
 
@@ -35,6 +35,7 @@ module Model
             Model::Food.new(4, 4),
             Model::Grid.new(8, 12),
             Direction::DOWN
+            false
         )
     end
 end

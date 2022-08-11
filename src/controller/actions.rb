@@ -31,4 +31,25 @@ module Actions
             # decrementar columna 
             return Model::Coord.new(new_position.row, new_position.column - 1)
     end
+
+    def position_is_valid?(state, position)
+        # verificar que este en la grid
+        is_invalid = ((position.row >= state.grid.rows ||
+            position.row < 0) || (position.column >= state.grid.columns ||
+            position.column < 0))
+        return false if is_invalid
+        # verificar que no este superponiendo a la serpiente
+        return !(state.snake.positions.include? position)
+    end
+
+    def move_snake_to(state, position)
+        new_ positions = [next_position] + state.snake.positions[0...-1]
+        state.snake.positions = new_positions
+        state
+    end
+
+    def end_game(state)
+        state.game_finished = true
+        state
+    end
 end
